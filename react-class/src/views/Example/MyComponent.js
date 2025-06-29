@@ -14,6 +14,10 @@ class MyComponent extends React.Component
         name: event.target.value
     })
    }
+
+   handleOnClickButton =() =>{
+    alert('Click me')
+   }
     render(){
         
         return(
@@ -27,6 +31,9 @@ class MyComponent extends React.Component
             </div>
             <div  className="second">
                 My Facebook channel is : {this.state.channel}
+            </div>
+            <div className="third">
+                <button onClick={() => this.handleOnClickButton()}>Click me</button>
             </div>
             </Fragment>
         );
