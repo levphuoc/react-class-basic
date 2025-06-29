@@ -68,3 +68,13 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+folder assets -- lưu trữ các file hình ảnh, âm thanh ở dạng công khai
+folder components -- có thể dùng để viết riêng các component -> tối ưu hơn là để share các componenent dùng chung, tái sử dụng code share source
+folder routes -- nơi định nghĩa các route mà website có thể truy cập
+folder store -- viết bằng redux
+folder styles -- viết scss global
+folder utils -- các funtion dùng chung 
+folder views -- các page 
+folder services -- gọi các API từ be 
+
