@@ -32,10 +32,20 @@ class ChildComponent extends React.Component {
         //  let age = this.props.age;
 
         //key:value declare variable name the same key cuar props 
-         let {name , age } = this.props;
+         let {name , age, address, arrJobs } = this.props;
+         let a ='';
         return (
-            <div>
-                child components name : {name} - {age}
+            <div className="job-lists">
+               {
+               a =  arrJobs.map((item, index) => {
+                    return (
+                        <div key={item.id}>
+                            {item.title} - {item.salary}
+                        </div>
+                    )
+                })
+               }
+               {console.log('check arrJobs la ', a)}
             </div>
         );
     }

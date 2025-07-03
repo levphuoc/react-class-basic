@@ -3,7 +3,12 @@ import ChildComponent from "./ChildComponent";
 class MyComponent extends React.Component {
     state = {
         firstName: '',
-        lastName: ''
+        lastName: '',
+        arrJobs:[
+            {id: 'ab12', title: 'developer', salary: '500 $'},
+             {id: 'ab13', title: 'tester', salary: '400 $'},
+              {id: 'ab14', title: 'prject manager', salary: '1500 $'}
+        ]
     }
     /* 
     JSX => return block
@@ -46,9 +51,17 @@ class MyComponent extends React.Component {
                         onClick={(event) => this.handleOnClick(event)}
                     />
                 </form>
-                <ChildComponent name={'child one'} age={'25'}/>
-                <ChildComponent name={'child two'} age={'22'}/>
-                <ChildComponent name={'child three'} age={'23'}/>
+                <ChildComponent 
+                name={this.state.firstName}
+                 age={'25'}
+                 address={'Ha Noi'}
+                 arrJobs={this.state.arrJobs}/>
+                {/* <ChildComponent 
+                name={'child two'} 
+                age={'22'}/>
+                <ChildComponent 
+                name={'child three'} 
+                age={'23'}/> */}
 
             </>  
         );
