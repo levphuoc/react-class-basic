@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.scss';
 import MyComponent from './Example/MyComponent';
+import ChildComponent from './Example/ChildComponent';
 
 /**
  * 2 components: class components / function components (function, arrow)
@@ -14,15 +15,8 @@ function App() {
         <p>
           Hello Nhi with phuoc
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
         <MyComponent/>
+        
         {/*<MyComponent></MyComponent>*/}
       </header>
     </div>
