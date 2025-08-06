@@ -2,6 +2,7 @@ import React from 'react';
 import './ListTodo.scss';
 import AddTodo from './AddTodo';
 import { toast } from 'react-toastify';
+import ColorWrapper from "../HOC/ColorWrapper";
 
 class ListTodo extends React.Component {
 
@@ -35,7 +36,7 @@ class ListTodo extends React.Component {
   handleEditTodo = (todo) => {
     let { editTodos, listTodos } = this.state;
     let isEmptyObj = Object.keys(editTodos).length === 0;
-    if(isEmptyObj === false && editTodos.id == todo.id) {
+    if (isEmptyObj === false && editTodos.id == todo.id) {
       let listTodosCopy = [...listTodos];
       let objIndex = listTodosCopy.findIndex((item => item.id === todo.id));
       listTodosCopy[objIndex].title = editTodos.title;
@@ -64,46 +65,50 @@ class ListTodo extends React.Component {
     console.log('check editTodos: ', isEmptyObj);
     // let listTodos = this.state.listTodos;
     return (
-      <div className="list-todo-container">
-        <AddTodo
+      <>
+      <div className="list-todo-container" style={{ color: this.props.color }}>
+         <p>Welcome TODO list phuoc and &amp; nhi</p>
+         <AddTodo
           addNewTodo={this.addNewTodo}
         />
-
         <div className="list-todo-content">
           {listTodos && listTodos.length > 0 && listTodos.map((item, index) => {
             return (
-              <div className="todo-child" key={item.id}>
-                {isEmptyObj === true ?
-                  <span>{index + 1} - {item.title}  </span>
-                  :
-                  <>
-                    {editTodos.id === item.id ?
-                    <span>
-                      {index + 1} - <input value={editTodos.title}
-                      onChange={(event) => this.handleOnChangeEditTodo(event)} />
-                    </span>
-                    :
+                <div className="todo-child" key={item.id}>
+                  {isEmptyObj === true ?
                     <span>{index + 1} - {item.title}  </span>
-                    }
-                  </>
+                    :
+                    <>
+                      {editTodos.id === item.id ?
+                        <span>
+                          {index + 1} - <input value={editTodos.title}
+                            onChange={(event) => this.handleOnChangeEditTodo(event)} />
+                        </span>
+                        :
+                        <span>{index + 1} - {item.title}  </span>
+                      }
+                    </>
 
-                }
-                <button className="edit-button"
-                  onClick={() => this.handleEditTodo(item)}
-                >
-                  {isEmptyObj === false && editTodos.id === item.id ? 'Save' : 'Edit'} 
+                  }
+                  <button className="edit-button"
+                    onClick={() => this.handleEditTodo(item)}
+                  >
+                    {isEmptyObj === false && editTodos.id === item.id ? 'Save' : 'Edit'}
                   </button>
-                <button className="delete-button"
-                  onClick={() => this.handleDeleteTodo(item)}
-                >Delete</button>
-              </div>
-            )
-          })}
+                  <button className="delete-button"
+                    onClick={() => this.handleDeleteTodo(item)}
+                  >Delete</button>
+                </div>
+
+                )
+          })
+          }
 
         </div>
       </div>
+      </>
     )
   }
 }
 
-export default ListTodo;
+export default ColorWrapper(ListTodo);
