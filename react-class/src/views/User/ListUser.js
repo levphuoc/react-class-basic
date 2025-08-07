@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import './ListUser.scss';
 class ListUser extends React.Component {
 state = {
@@ -17,7 +18,10 @@ state = {
         console.log('User data fetched:', res.data.data);
         
     }
-
+    handleViewDetailUser = (user) =>{
+        // Or if using useNavigate hook:
+        this.props.navigate(`/user/${user.id}`);
+    }
     render() {  
         let { listUser } = this.state;
         return (
@@ -26,7 +30,8 @@ state = {
                 <div className="list-user-content">
                     {listUser && listUser.length > 0 && listUser.map((item, index) => {
                         return (
-                            <div className="child" key={item.id}>
+                            <div className="child" key={item.id}
+                                onClick={() => this.handleViewDetailUser(item)}>
                                 {index + 1} - {item.first_name} {item.last_name} 
                             </div>
                         )
@@ -36,5 +41,10 @@ state = {
         )
     }
 }
+const ListUserWrapper = () => {
+    const navigate = useNavigate();
+    return <ListUser navigate={navigate} />;
+};
 
-export default ListUser;
+
+export default ListUserWrapper;
